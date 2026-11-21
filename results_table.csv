@@ -1,0 +1,17 @@
+run_id,architecture,input_size,seed,trainable_params,total_params,epochs,best_val_acc,macro_f1,final_train_acc,gen_gap,train_minutes,peak_gpu_mb,status,failed_batch_sizes,note
+AlexNet_s42,AlexNet,96,42,24767882,24767882,5,0.5143,0.5085,0.5115,-0.0028,0.98,1865.9,ok,,"scratch; 5-epoch budget equalises data exposure, not params/FLOPs/time"
+VGG16_s42,VGG16,96,42,50415434,50415434,5,0.1,0.0182,0.0926,-0.0023,4.09,2883.9,ok,,"scratch; 5-epoch budget equalises data exposure, not params/FLOPs/time"
+GoogLeNet_s42,GoogLeNet,96,42,5983802,5983802,5,0.442,0.4212,0.4551,0.0131,3.64,2311.7,ok,,"scratch; 5-epoch budget equalises data exposure, not params/FLOPs/time"
+ResNet18_s42,ResNet18,96,42,11181642,11191242,5,0.5683,0.5687,0.8165,0.2482,1.5,2255.3,ok,,"scratch; 5-epoch budget equalises data exposure, not params/FLOPs/time"
+A0_s42,A0,64,42,20042,20042,10,0.301,0.2713,0.2873,-0.0137,0.56,2062.7,ok,,baseline
+A1_s42,A1,64,42,20138,20330,10,0.4133,0.4049,0.471,0.0577,0.62,1963.5,ok,,+BN
+A2_s42,A2,64,42,20138,20330,10,0.399,0.3807,0.4421,0.0431,1.03,2083.5,ok,,+augmentation
+A3P_s42,A3P,64,42,298026,298986,10,0.592,0.5821,0.6893,0.0748,2.24,2315.2,ok,,deeper plain (more params than A2)
+A3R_s42,A3R,64,42,308650,309994,10,0.6247,0.6181,0.6747,0.0501,2.49,2083.7,ok,,A3P + shortcuts (adds 1x1 projection params)
+A0_s123,A0,64,123,20042,20042,10,0.3003,0.2582,0.2959,-0.0044,0.47,1944.7,ok,,baseline
+A1_s123,A1,64,123,20138,20330,10,0.422,0.4095,0.456,0.0199,0.59,1945.0,ok,,+BN
+A2_s123,A2,64,123,20138,20330,10,0.4363,0.4227,0.4432,-0.0054,1.08,1968.4,ok,,+augmentation
+A3P_s123,A3P,64,123,298026,298986,10,0.54,0.5361,0.6946,0.0756,2.25,2068.5,ok,,deeper plain (more params than A2)
+A3R_s123,A3R,64,123,308650,309994,10,0.5453,0.5449,0.6839,0.1386,2.61,2093.7,ok,,A3P + shortcuts (adds 1x1 projection params)
+A4F_s42,A4-F,128,42,20490,23608202,5,0.8637,0.8628,0.8872,0.0235,2.54,2248.7,ok,,"SEPARATE branch: ImageNet init + external data; frozen trunk, BN in inference mode"
+A4T_s42,A4-T,128,42,14973962,23608202,5,0.8907,0.891,0.995,0.0661,2.1,3374.9,ok,,fine-tune conv5 stage from A4-F checkpoint; recompiled; lr 1e-5; BN frozen

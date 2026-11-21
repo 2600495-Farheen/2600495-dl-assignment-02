@@ -1,0 +1,1 @@
+{"winner_run_id": "ResNet18_s42", "best_val_acc": 0.5683, "rule": "max best_val_acc among 4 scratch architectures; tie -> fewer params"}
